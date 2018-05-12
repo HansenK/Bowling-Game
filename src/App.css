@@ -1,0 +1,87 @@
+.title{
+  margin: 0px auto;
+  width: 500px;
+}
+.titletext{
+  text-align: center;
+  font-size: 60px;
+}
+.pontuation{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.rolls{
+  width: 120px;
+  height: 120px;
+  border: 1px solid black;
+  margin: 0px 5px;
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgray;
+}
+.firsttrie{
+  width: 40px;
+  height: 40px;
+  flex-grow: 2;
+  align-content: center;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.secondtrie{
+  width: 40px;
+  height: 40px;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thirdtrie{
+  width: 40px;
+  height: 40px;
+  border-bottom: 1px solid black;
+  flex-grow: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.secondtrie10{
+  flex-grow: 2;
+  width: 40px;
+  height: 40px;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.divButton{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+.buttonRoll{
+  width: 200px;
+  height: 50px;
+  font-size: 40px;
+  background-color: cadetblue;
+}
+.result{
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  height: 80px;
+  margin-top: 60px;
+}
+.resulttrie{
+  font-size: 25px;
+  position: absolute;
+}

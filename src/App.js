@@ -3,7 +3,8 @@ import "./App.css";
 import RollsDiv from "./roll";
 
 const getRollScore = (roll, x, rolls) => {
-  let rollScore = roll.firstScore + (roll.secondScore || 0);
+  let rollScore =
+    roll.firstScore + (roll.secondScore || 0) + (roll.thirdScore || 0);
 
   if (roll.spare) {
     const nextRoll = rolls[x + 1];
@@ -32,7 +33,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      rolls: []
+      rolls: [],
+      finalresult: "Waiting..."
     };
   }
 
@@ -43,7 +45,7 @@ class App extends Component {
 
     if (rolls.length > 0) {
       const lastRoll = rolls[rolls.length - 1];
-      lastRoll.finished === false
+      lastRoll.finished === false && !lastRoll.bonusRound
         ? (max = 11 - lastRoll.firstScore)
         : (max = 11);
     }
@@ -53,31 +55,24 @@ class App extends Component {
 
   addNewRoll() {
     const { rolls } = this.state;
+    let { finalresult } = this.state;
+    let rollConcat = rolls.concat();
     const lastRoll = rolls[rolls.length - 1];
-    const penultimate = rolls[rolls.length - 2];
+    let final = rolls.length === 9;
     const firstScore = this.getRandomNumber();
-    let final;
-
-    if (rolls.length > 8) {
-      if (lastRoll.strike || lastRoll.spare) {
-        final = 11;
-      } else {
-        final = 10;
-      }
-    }
-
-    if (final === 10) return alert("Acabou!");
 
     const strike = firstScore === 10;
     const newRoll = {
       playindex: rolls.length,
       firstScore,
       secondScore: null,
+      thirdScore: null,
       spare: false,
       strike,
-      finished: strike
+      finished: !final && strike,
+      bonusRound: final && strike
     };
-    this.setState({ rolls: [...rolls, newRoll] });
+    this.setState({ rolls: [...rollConcat, newRoll], finalresult });
   }
 
   roll() {
@@ -89,7 +84,10 @@ class App extends Component {
     }
 
     const lastRoll = rolls[rolls.length - 1];
-    const penultimate = rolls[rolls.length - 2];
+
+    if (rolls.length === 10 && lastRoll.finished) {
+      return alert("Game Over!");
+    }
 
     if (lastRoll.finished === true) {
       this.addNewRoll();
@@ -101,17 +99,30 @@ class App extends Component {
         return roll;
       }
 
-      const secondScore = this.getRandomNumber();
+      const secondScore = roll.bonusRound
+        ? roll.secondScore
+        : this.getRandomNumber();
+      const thirdScore = roll.bonusRound
+        ? this.getRandomNumber()
+        : roll.thirdScore;
+      const final = rolls.length === 10;
+      const spare = !roll.strike && roll.firstScore + secondScore === 10;
 
       return {
         ...roll,
         secondScore,
-        spare: roll.firstScore + secondScore === 10,
-        finished: true
+        thirdScore,
+        spare,
+        finished: !(final && spare),
+        bonusRound: final && spare
       };
     });
 
     this.setState({ rolls: newRolls });
+  }
+
+  refresh() {
+    this.setState({ rolls: [] });
   }
 
   render() {
@@ -129,7 +140,8 @@ class App extends Component {
         <div className="pontuation">
           {DivRolls.map(x => {
             const roll = this.state.rolls[x] || {};
-            const finalScore = getFinalScore(this.state.rolls, x);
+            const rolls = this.state.rolls;
+            let finalScore = getFinalScore(this.state.rolls, x);
             return (
               <RollsDiv
                 roll={roll}
@@ -140,6 +152,17 @@ class App extends Component {
               />
             );
           })}
+        </div>
+        <div className="finalresult">
+          FINAL RESULT:{" "}
+          {this.state.rolls.length === 10 && this.state.rolls[9].finished
+            ? getFinalScore(this.state.rolls, 9)
+            : "Waiting..."}
+        </div>
+        <div className="refreshdiv">
+          <button className="refreshbutton" onClick={() => this.refresh()}>
+            Restart
+          </button>
         </div>
       </div>
     );

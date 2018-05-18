@@ -1,18 +1,18 @@
-.title{
+.title {
   margin: 0px auto;
   width: 500px;
 }
-.titletext{
+.titletext {
   text-align: center;
   font-size: 60px;
 }
-.pontuation{
+.pontuation {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.rolls{
+.rolls {
   width: 120px;
   height: 120px;
   border: 1px solid black;
@@ -21,7 +21,7 @@
   justify-content: space-between;
   background-color: lightgray;
 }
-.firsttrie{
+.firsttrie {
   width: 40px;
   height: 40px;
   flex-grow: 2;
@@ -31,7 +31,7 @@
   align-items: center;
   justify-content: center;
 }
-.secondtrie{
+.secondtrie {
   width: 40px;
   height: 40px;
   border-bottom: 1px solid black;
@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: center;
 }
-.thirdtrie{
+.thirdtrie {
   width: 40px;
   height: 40px;
   border-bottom: 1px solid black;
@@ -50,7 +50,7 @@
   align-items: center;
   justify-content: center;
 }
-.secondtrie10{
+.secondtrie10 {
   flex-grow: 2;
   width: 40px;
   height: 40px;
@@ -61,18 +61,18 @@
   align-items: center;
   justify-content: center;
 }
-.divButton{
+.divButton {
   display: flex;
   justify-content: center;
   margin-bottom: 100px;
 }
-.buttonRoll{
+.buttonRoll {
   width: 200px;
   height: 50px;
   font-size: 40px;
   background-color: cadetblue;
 }
-.result{
+.result {
   font-size: 40px;
   font-weight: bold;
   position: absolute;
@@ -81,7 +81,25 @@
   height: 80px;
   margin-top: 60px;
 }
-.resulttrie{
+.resulttrie {
   font-size: 25px;
   position: absolute;
+}
+.finalresult {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 50px;
+}
+.refreshbutton {
+  margin: 0px auto;
+  font-size: 25px;
+  width: 100px;
+  height: 50px;
+  font-size: 25px;
+  background-color: cadetblue;
+}
+.refreshdiv {
+  margin-top: 50px;
+  display: flex;
+  align-content: center;
 }

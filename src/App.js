@@ -129,12 +129,17 @@ class App extends Component {
     const DivRolls = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     return (
       <div className="App">
-        <div className="title">
+        '<div className="title">
           <h1 className="titletext">BOWLING GAME</h1>
         </div>
         <div className="divButton">
           <button className="buttonRoll" onClick={() => this.roll()}>
             ROLL!
+          </button>
+        </div>
+        <div className="refreshdiv">
+          <button className="refreshbutton" onClick={() => this.refresh()}>
+            Restart
           </button>
         </div>
         <div className="pontuation">
@@ -158,11 +163,6 @@ class App extends Component {
           {this.state.rolls.length === 10 && this.state.rolls[9].finished
             ? getFinalScore(this.state.rolls, 9)
             : "Waiting..."}
-        </div>
-        <div className="refreshdiv">
-          <button className="refreshbutton" onClick={() => this.refresh()}>
-            Restart
-          </button>
         </div>
       </div>
     );

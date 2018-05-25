@@ -1,3 +1,12 @@
+.App {
+  background-image: url("https://image.ibb.co/nd7my8/depositphotos_170053274_stock_video_black_bowling_ball_knocking_pins_1.jpg");
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+}
 .title {
   margin: 0px auto;
   width: 500px;
@@ -5,6 +14,7 @@
 .titletext {
   text-align: center;
   font-size: 60px;
+  color: white;
 }
 .pontuation {
   margin-top: 20px;
@@ -64,13 +74,13 @@
 .divButton {
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
 }
 .buttonRoll {
-  width: 200px;
-  height: 50px;
-  font-size: 40px;
+  width: 250px;
+  height: 70px;
+  font-size: 50px;
   background-color: cadetblue;
+  color: darkred;
 }
 .result {
   font-size: 40px;
@@ -94,12 +104,13 @@
   margin: 0px auto;
   font-size: 25px;
   width: 100px;
-  height: 50px;
+  height: 30px;
   font-size: 25px;
   background-color: cadetblue;
 }
 .refreshdiv {
-  margin-top: 50px;
   display: flex;
   align-content: center;
+  margin-bottom: 100px;
+  margin-top: 20px;
 }
